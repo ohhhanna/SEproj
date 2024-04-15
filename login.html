@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .background {
+            height: 100vh;
+            display: flex;
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+        }
+
+        .login-container, .register-container {
+            background-color: rgba(241, 135, 197, 0.8);
+            padding: 40px; /* Increased padding */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .login-container h2, .register-container h2 {
+            margin-bottom: 20px; /* Increased margin */
+        }
+
+        .login-form, .register-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px; /* Increased margin */
+        }
+
+        .login-form input, .register-form input, select {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .login-form button, .register-form button {
+            width: 120px; /* Increased width */
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-form button:hover, .register-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="login-container">
+            <h2>Login</h2>
+            <form class="login-form" id="login-form" action="javascript:void(0);">
+                <input type="text" placeholder="Username" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+    <div class="background">
+        <div class="register-container">
+            <h2>New User Registration</h2>
+            <form class="register-form" id="register-form" action="javascript:void(0);">
+                <input type="text" placeholder="First Name" required>
+                <input type="text" placeholder="Last Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <select>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                <input type="text" placeholder="Organization" required>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        // Handle form submission for login
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Perform authentication (you need to implement this)
+            // If authentication succeeds, redirect to the appropriate page
+            // Example:
+            var userType = 'participant'; // Replace with actual user type (admin, sponsor, participant)
+            switch (userType) {
+                case 'admin':
+                    window.location.href = "admin.html";
+                    break;
+                case 'sponsor':
+                    window.location.href = "sponsor.html";
+                    break;
+                case 'participant':
+                default:
+                    window.location.href = "participant.html";
+                    break;
+            }
+        });
+
+        // Handle form submission for registration
+        document.getElementById("register-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Perform registration (you need to implement this)
+            // After successful registration, redirect to the login page
+            window.location.href = "login.html";
+        });
+    </script>
+</body>
+</html>

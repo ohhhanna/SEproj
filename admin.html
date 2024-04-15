@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <style>
+        /* Styles for the admin panel */
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('shelf.png'); /* Set path to your pixelated store shelf image */
+            background-size: cover;
+            background-repeat: repeat;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .option {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.89); /* Set box background color with transparency */
+            border-radius: 10px; /* Add rounded corners */
+            cursor: pointer; /* Change cursor to pointer */
+            border: 2px solid #000; /* Add black border */
+            width: 300px; /* Set width of each option box */
+            text-align: center; /* Center text */
+        }
+        .option img {
+            width: 80px; /* Adjust size as needed */
+            height: 80px; /* Adjust size as needed */
+            margin-bottom: 10px; /* Add margin between icon and text */
+        }
+        .option span {
+            display: block; /* Ensure each span occupies a new line */
+        }
+        h1 {
+            text-align: center; /* Center align heading */
+            margin-bottom: 20px; /* Add margin to separate from options */
+            color: white; /* Change text color to white */
+            background-color: rgba(0, 0, 255, 0.5); /* Set header background color with transparency */
+            padding: 10px; /* Add padding */
+            width: 300px; /* Set width of header */
+            border-radius: 10px; /* Add rounded corners */
+            border: 2px solid #000; /* Add black border */
+        }
+    </style>
+</head>
+<body>
+    <h1>Select an Option</h1> <!-- Updated heading -->
+    <div class="options">
+        <a href="create.html" class="option">
+            <img src="create.png" alt="Create Event"> <!-- Replace with your pixelated create event icon -->
+            <span>Create Event</span>
+        </a>
+        <a href="update.html" class="option">
+            <img src="update.png" alt="Update Event"> <!-- Replace with your pixelated update event icon -->
+            <span>Update Event</span>
+        </a>
+        <a href="delete.html" class="option">
+            <img src="trash.png" alt="Delete Event"> <!-- Replace with your pixelated delete event icon -->
+            <span>Delete Event</span>
+        </a>
+        <a href="budget.html" class="option">
+            <img src="budget.jpeg" alt="Budget Management"> <!-- Replace with your pixelated budget management icon -->
+            <span>Budget Management</span>
+        </a>
+    </div>
+</body>
+</html>

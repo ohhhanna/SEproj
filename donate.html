@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('counter.png'); /* Background photo */
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .container input {
+            width: 300px;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .container button {
+            width: 150px;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #0056b3;
+        }
+        .receipt-button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Donate</h2>
+        <button onclick="showUPIForm()">Donate via UPI</button>
+        <button onclick="showCardForm()">Donate via Card</button>
+
+        <div id="upiForm" style="display: none;">
+            <input type="text" id="upiId" placeholder="Enter UPI ID" required><br>
+            <input type="number" id="upiAmount" placeholder="Enter Amount (in INR)" required><br>
+            <button onclick="donateViaUPI()">Donate</button>
+        </div>
+
+        <div id="cardForm" style="display: none;">
+            <input type="text" id="cardNumber" placeholder="Enter Card Number" required><br>
+            <input type="password" id="cardPin" placeholder="Enter Card PIN" required><br>
+            <input type="number" id="cardAmount" placeholder="Enter Amount (in INR)" required><br>
+            <button onclick="donateViaCard()">Donate</button>
+        </div>
+
+        <div id="thankYouMessage" style="display: none;">
+            <h2>Thank You for Donating!</h2>
+            <button class="receipt-button" onclick="printReceipt()">Print Receipt</button>
+        </div>
+    </div>
+
+    <script>
+        function showUPIForm() {
+            document.getElementById('upiForm').style.display = 'block';
+            document.getElementById('cardForm').style.display = 'none';
+        }
+
+        function showCardForm() {
+            document.getElementById('cardForm').style.display = 'block';
+            document.getElementById('upiForm').style.display = 'none';
+        }
+
+        function donateViaUPI() {
+            var upiId = document.getElementById('upiId').value;
+            var upiAmount = document.getElementById('upiAmount').value;
+            // Process donation via UPI (You can use AJAX to send payment details)
+            // For demonstration, showing thank you message
+            document.getElementById('thankYouMessage').style.display = 'block';
+            hideForms();
+        }
+
+        function donateViaCard() {
+            var cardNumber = document.getElementById('cardNumber').value;
+            var cardPin = document.getElementById('cardPin').value;
+            var cardAmount = document.getElementById('cardAmount').value;
+            // Process donation via Card (You can use AJAX to send payment details)
+            // For demonstration, showing thank you message
+            document.getElementById('thankYouMessage').style.display = 'block';
+            hideForms();
+        }
+
+        function hideForms() {
+            document.getElementById('upiForm').style.display = 'none';
+            document.getElementById('cardForm').style.display = 'none';
+        }
+
+        function printReceipt() {
+            // Implement printing functionality here (e.g., window.print())
+            window.print();
+        }
+    </script>
+</body>
+</html>

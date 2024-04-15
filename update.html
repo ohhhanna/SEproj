@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Event</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('shelf.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .header {
+            background-color: rgba(0, 0, 255, 0.5); /* Blue translucent box */
+            padding: 10px;
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+            width: 80%;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Transparent white container */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        .container input {
+            width: 300px;
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        .container button {
+            width: 150px;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="loginSection">
+        <div class="header">Enter Your Username and Password</div>
+        <div class="container">
+            <form id="loginForm">
+                <input type="text" name="username" placeholder="Username" required><br>
+                <input type="password" name="password" placeholder="Password" required><br>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="updateSection" style="display: none;">
+        <div class="header">Update Event Details</div>
+        <div class="container">
+            <form id="updateForm">
+                <input type="text" name="eventName" placeholder="Event Name" required><br>
+                <!-- Add other event details inputs -->
+
+                <!-- Team Members -->
+                <div id="teamMembersContainer">
+                    <h3>Team Members</h3>
+                    <div class="teamMember">
+                        <input type="text" name="teamName[]" placeholder="Team Member Name" required>
+                        <input type="text" name="teamNumber[]" placeholder="Team Member Number" required>
+                    </div>
+                </div>
+                <button type="button" id="addTeamMember">Add Team Member</button>
+
+                <input type="password" name="adminPassword" placeholder="Admin Password for Confirmation" required><br>
+                <button type="submit">Update Event</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Check username and password (you can use AJAX to check with server)
+
+            // For demonstration, assuming username and password are correct
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('updateSection').style.display = 'block';
+        });
+
+        document.getElementById('addTeamMember').addEventListener('click', function() {
+            var teamMembersContainer = document.getElementById('teamMembersContainer');
+            var teamMemberDiv = document.createElement('div');
+            teamMemberDiv.classList.add('teamMember');
+            teamMemberDiv.innerHTML = '<input type="text" name="teamName[]" placeholder="Team Member Name" required>' +
+                                      '<input type="text" name="teamNumber[]" placeholder="Team Member Number" required>';
+            teamMembersContainer.appendChild(teamMemberDiv);
+        });
+    </script>
+</body>
+</html>

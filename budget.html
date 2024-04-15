@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Management</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('shelf.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .header {
+            background-color: rgba(0, 0, 255, 0.5); /* Blue translucent box */
+            padding: 10px;
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+            width: 80%;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Transparent white container */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        .container input {
+            width: 300px;
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        .container button {
+            width: 150px;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Budget Management</div>
+
+    <div class="container" id="loginContainer">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="userType">Login As:</label>
+            <select name="userType" id="userType" required>
+                <option value="admin">Admin</option>
+                <option value="member">Member</option>
+            </select><br>
+            <input type="text" name="username" placeholder="Username" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div class="container" id="adminActions" style="display: none;">
+        <h2>Admin Actions</h2>
+        <img id="budgetPDF" src="pdfb.jpg" alt="PDF Icon" width="200" height="200" style="display:none;">
+        <button id="verifyBudget" style="display:none;">Verify Budget</button>
+    </div>
+
+    <div class="container" id="memberActions" style="display: none;">
+        <h2>Member Actions</h2>
+        <form id="budgetForm">
+            <input type="file" name="budgetFile" accept=".pdf" required><br>
+            <button type="submit">Send Budget for Verification</button>
+        </form>
+    </div>
+
+    <div class="header" id="verificationMessage" style="display: none;">Updates will be sent via email after verification</div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var userType = document.getElementById('userType').value;
+            var username = document.getElementById('loginForm').username.value;
+            var password = document.getElementById('loginForm').password.value;
+
+            // Check username and password (you can use AJAX to check with server)
+            // For demonstration, assuming username and password are correct
+            if (userType === 'admin') {
+                document.getElementById('loginContainer').style.display = 'none';
+                document.getElementById('adminActions').style.display = 'block';
+                document.getElementById('budgetPDF').style.display = 'block';
+                document.getElementById('verifyBudget').style.display = 'block';
+            } else {
+                document.getElementById('loginContainer').style.display = 'none';
+                document.getElementById('memberActions').style.display = 'block';
+            }
+        });
+
+        document.getElementById('verifyBudget').addEventListener('click', function(event) {
+            // Verify budget (you can use AJAX to send verification request to server)
+            // For demonstration, assuming budget is verified successfully
+            document.getElementById('verificationMessage').style.display = 'block';
+            document.getElementById('adminActions').style.display = 'none';
+        });
+
+        document.getElementById('budgetForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Upload budget (you can use AJAX to send budget file to server)
+            // For demonstration, assuming budget is sent successfully
+            document.getElementById('verificationMessage').style.display = 'block';
+            document.getElementById('memberActions').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

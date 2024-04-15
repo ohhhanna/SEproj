@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('counter.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.7); /* White translucent box */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        #successMessage {
+            display: none;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        #printTicket {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="paymentContainer">
+        <h1>Choose Payment Method</h1>
+        <form id="upiForm">
+            <h2>Pay with UPI</h2>
+            <input type="text" name="upiId" placeholder="Enter UPI ID" required><br>
+            <input type="text" name="phoneNumber" placeholder="Enter Phone Number" required><br>
+            <input type="text" name="name" placeholder="Enter Name" required><br>
+            <input type="text" name="bankName" placeholder="Enter Bank Name" required><br>
+            <input type="password" name="upiPin" placeholder="Enter UPI PIN" required><br>
+            <input type="submit" value="Pay">
+        </form>
+        
+        <form id="cardForm">
+            <h2>Pay with Card</h2>
+            <input type="text" name="cardNumber" placeholder="Enter Card Number" required><br>
+            <select name="cardType" required>
+                <option value="visa">Visa</option>
+                <option value="rupay">Rupay</option>
+                <option value="mastercard">Mastercard</option>
+            </select><br>
+            <input type="text" name="phoneNumber" placeholder="Enter Phone Number" required><br>
+            <input type="text" name="name" placeholder="Enter Name" required><br>
+            <input type="text" name="bankName" placeholder="Enter Bank Name" required><br>
+            <input type="password" name="cardPin" placeholder="Enter Card PIN" required><br>
+            <input type="submit" value="Pay">
+        </form>
+    </div>
+
+    <div id="successMessage">
+        <h1>Payment Successful!</h1>
+        <p>Your ticket has been booked.</p>
+        <button id="printTicket">Print Ticket</button>
+    </div>
+
+    <script>
+        document.getElementById('upiForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Handle UPI payment submission (you can use AJAX to send payment details)
+            // For demonstration, just show success message
+            document.getElementById('paymentContainer').style.display = 'none';
+            showSuccessMessage();
+        });
+
+        document.getElementById('cardForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Handle card payment submission (you can use AJAX to send payment details)
+            // For demonstration, just show success message
+            document.getElementById('paymentContainer').style.display = 'none';
+            showSuccessMessage();
+        });
+
+        document.getElementById('printTicket').addEventListener('click', function() {
+            // Code to print ticket (you can add your own functionality here)
+            alert('Ticket printed!');
+        });
+
+        function showSuccessMessage() {
+            document.getElementById('successMessage').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

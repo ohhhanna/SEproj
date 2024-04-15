@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('shelf.png'); /* Background shelf image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .header {
+            background-color: rgba(0, 0, 255, 0.521); /* Blue translucent box */
+            padding: 10px;
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+            width: 80%;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        .container {
+            background-color:  rgba(0, 0, 255, 0.329); /* Transparent white container */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        .container input,
+        .container select {
+            width: 300px;
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        .container button {
+            width: 150px;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #0056b3;
+        }
+        .message-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Enter the following details</div>
+    <div class="container">
+        <form id="createEventForm">
+            <input type="text" name="eventName" placeholder="Event Name" required><br>
+            <!-- Input for time slots -->
+            <label for="eventTime">Time of Event (Start - End):</label><br>
+            <input type="time" name="eventStartTime" required> -
+            <input type="time" name="eventEndTime" required><br>
+            <!-- Input for date with calendar -->
+            <label for="eventDate">Date of Event:</label><br>
+            <input type="date" name="eventDate" required><br>
+            <!-- Input for event duration -->
+            <input type="text" name="eventDuration" placeholder="Duration of Event" required><br>
+            <!-- Dropdown for venue options -->
+            <label for="eventVenue">Venue of Event:</label><br>
+            <select name="eventVenue" required>
+                <option value="Hall 1">Hall 1</option>
+                <option value="Hall 2">Hall 2</option>
+                <option value="Hall 3">Hall 3</option>
+            </select><br>
+            <!-- Dropdown for event type options -->
+            <label for="eventType">Type of Event:</label><br>
+            <select name="eventType" required>
+                <option value="Academic Conference">Academic Conference</option>
+                <option value="Technical and Cultural Events">Technical and Cultural Events</option>
+                <option value="National Events">National Events</option>
+            </select><br>
+            <!-- Password input for confirmation -->
+            <input type="password" name="eventPassword" placeholder="Password for Confirmation" required><br>
+            <button type="submit">Create Event</button>
+        </form>
+    </div>
+
+    <!-- Message Popup -->
+    <div id="messagePopup" class="message-popup"></div>
+
+    <script>
+        document.getElementById('createEventForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // You can add your logic to create the event here
+            // For demonstration, let's assume the event is created successfully
+            document.getElementById('createEventForm').reset(); // Clear form inputs
+            showMessagePopup("Event Created!"); // Show success message
+        });
+
+        function showMessagePopup(message) {
+            var popup = document.getElementById('messagePopup');
+            popup.textContent = message;
+            popup.style.display = 'block';
+            setTimeout(function() {
+                popup.style.display = 'none';
+            }, 2000); // Hide after 2 seconds
+        }
+    </script>
+</body>
+</html>
